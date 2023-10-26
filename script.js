@@ -3,21 +3,33 @@ console.log("🟥 🟦 🟩 🟨")
 const BLOCKS = document.getElementById("blocks")
 console.log(BLOCKS)
 
+/**
+ * @param {MouseEvent} e
+ */
 function createRed(e) {
   const block = createBlock("red")
   BLOCKS.appendChild(block)
 }
 
+/**
+ * @param {MouseEvent} e
+ */
 function createBlue(e) {
   const block = createBlock("blue")
   BLOCKS.appendChild(block)
 }
 
+/**
+ * @param {MouseEvent} e
+ */
 function createGreen(e) {
   const block = createBlock("green")
   BLOCKS.appendChild(block)
 }
 
+/**
+ * @param {MouseEvent} e
+ */
 function createYellow(e) {
   const block = createBlock("yellow")
   BLOCKS.appendChild(block)
