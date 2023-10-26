@@ -17,7 +17,7 @@ console.log(COUNTS)
  */
 function createRed(e) {
   const block = createBlock("red")
-  updateCounter(COUNTS.RED)
+  updateCounter(COUNTS.RED, 1)
   BLOCKS.appendChild(block)
 }
 
@@ -26,7 +26,7 @@ function createRed(e) {
  */
 function createBlue(e) {
   const block = createBlock("blue")
-  updateCounter(COUNTS.BLUE)
+  updateCounter(COUNTS.BLUE, 1)
   BLOCKS.appendChild(block)
 }
 
@@ -35,7 +35,7 @@ function createBlue(e) {
  */
 function createGreen(e) {
   const block = createBlock("green")
-  updateCounter(COUNTS.GREEN)
+  updateCounter(COUNTS.GREEN, 1)
   BLOCKS.appendChild(block)
 }
 
@@ -44,7 +44,7 @@ function createGreen(e) {
  */
 function createYellow(e) {
   const block = createBlock("yellow")
-  updateCounter(COUNTS.YELLOW)
+  updateCounter(COUNTS.YELLOW, 1)
   BLOCKS.appendChild(block)
 }
 
@@ -62,10 +62,11 @@ function createBlock(color) {
 
 /**
  * @param {HTMLButtonElement} counter
+ * @param {number} change
  */
-function updateCounter(counter) {
+function updateCounter(counter, change) {
   let count = Number(counter.innerText)
-  count++
+  count += change
   counter.innerText = count
 }
 
@@ -73,5 +74,7 @@ function updateCounter(counter) {
  * @param {MouseEvent} e
  */
 function deleteBlock(e) {
-  e.target.remove()
+  /** @type {HTMLDivElement} */
+  const block = e.target
+  block.remove()
 }
