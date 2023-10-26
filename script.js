@@ -24,10 +24,26 @@ function createRed(e) {
 /**
  * @param {MouseEvent} e
  */
+function deleteRed(e) {
+  updateCounter(COUNTS.RED, -1)
+  e.target.remove()
+}
+
+/**
+ * @param {MouseEvent} e
+ */
 function createBlue(e) {
   const block = createBlock("blue")
   updateCounter(COUNTS.BLUE, 1)
   BLOCKS.appendChild(block)
+}
+
+/**
+ * @param {MouseEvent} e
+ */
+function deleteBlue(e) {
+  updateCounter(COUNTS.BLUE, -1)
+  e.target.remove()
 }
 
 /**
@@ -42,10 +58,26 @@ function createGreen(e) {
 /**
  * @param {MouseEvent} e
  */
+function deleteGreen(e) {
+  updateCounter(COUNTS.GREEN, -1)
+  e.target.remove()
+}
+
+/**
+ * @param {MouseEvent} e
+ */
 function createYellow(e) {
   const block = createBlock("yellow")
   updateCounter(COUNTS.YELLOW, 1)
   BLOCKS.appendChild(block)
+}
+
+/**
+ * @param {MouseEvent} e
+ */
+function deleteYellow(e) {
+  updateCounter(COUNTS.YELLOW, -1)
+  e.target.remove()
 }
 
 /**
@@ -55,7 +87,23 @@ function createYellow(e) {
 function createBlock(color) {
   const block = document.createElement("div")
   block.classList.add("block", `${color}-fill`)
-  // block.addEventListener("click", deleteBlock)
+  switch (color) {
+    case "red":
+      block.addEventListener("click", deleteRed)
+      break
+    case "blue":
+      block.addEventListener("click", deleteBlue)
+      break
+    case "green":
+      block.addEventListener("click", deleteGreen)
+      break
+    case "yellow":
+      block.addEventListener("click", deleteYellow)
+      break
+    default:
+      // Should be unreachable
+      break
+  }
   console.log("Created a block:", block)
   return block
 }
@@ -68,13 +116,4 @@ function updateCounter(counter, change) {
   let count = Number(counter.innerText)
   count += change
   counter.innerText = count
-}
-
-/**
- * @param {MouseEvent} e
- */
-function deleteBlock(e) {
-  /** @type {HTMLDivElement} */
-  const block = e.target
-  block.remove()
 }
