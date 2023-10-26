@@ -42,8 +42,14 @@ function createYellow(e) {
 function createBlock(color) {
   const block = document.createElement("div")
   block.classList.add("block", `${color}-fill`)
+  block.addEventListener("click", deleteBlock)
   console.log("Created a block:", block)
   return block
 }
 
-// function appendTo
+/**
+ * @param {MouseEvent} e
+ */
+function deleteBlock(e) {
+  e.target.remove()
+}
